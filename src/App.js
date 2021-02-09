@@ -1,14 +1,14 @@
 // import ClassComponent from './pages/ComponentTest/ClassComponent'
 // import FunctionComponent from './pages/ComponentTest/FunctionComponent'
 // import SetStatePage from './pages/SetStatePage'
-import Layout from './Layout'
+import CompositionPage from './pages/CompositionPage';
 function App() {
   return (
     <div className="App">
       {/* <ClassComponent/> */}
       {/* <FunctionComponent/> */}
       {/* <SetStatePage/> */}
-      <Layout/>
+      <CompositionPage/>
     </div>
   );
 }
