@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Layout from './Layout'
+import RouterPage from './RouterPage';
 export default class CompositionPage extends Component {
     render() {
         return (
@@ -14,7 +15,7 @@ export default class CompositionPage extends Component {
                 {{
                     content:(
                         <div>
-                            <h3>组件复合</h3>
+                            <RouterPage/>
                         </div>
                     ),
                     txt:'文本',

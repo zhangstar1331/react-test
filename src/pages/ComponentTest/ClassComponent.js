@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import FunctionComponent from './FunctionComponent'
 //类组件测试
 export default class ClassComponent extends Component {
     constructor(props){
@@ -28,6 +29,7 @@ export default class ClassComponent extends Component {
             <div>
                 <h2>类组件</h2>
                 {this.state.date.toLocaleTimeString()}
+                <FunctionComponent/>
             </div>
         )
     }

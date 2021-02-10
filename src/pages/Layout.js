@@ -13,8 +13,8 @@ export default class Layout extends Component {
             <div>
                 {showTopBar&&<TopBar/>}
                 {children.content}
-                {children.txt}
-                <button onClick={children.btnClick}>点击</button>
+                {/* {children.txt}
+                <button onClick={children.btnClick}>点击</button> */}
                 {showBottomBar&&<BottomBar/>}
             </div>
         )
