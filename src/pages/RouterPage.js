@@ -5,6 +5,7 @@ import SetStatePage from './SetStatePage'
 import ReduxPage from './ReduxPage'
 import ReactReduxPage from './ReactReduxPage'
 import PureComponentPage from './PureComponentPage'
+import LifeCyclePage from './LifeCyclePage'
 export default class RouterPage extends Component {
     render() {
         return (
@@ -18,6 +19,7 @@ export default class RouterPage extends Component {
                     <Link to="/redux"> Redux测试 </Link>
                     <Link to="/reactRedux"> react-redux测试 </Link>
                     <Link to="/pureComponent"> PureComponent </Link>
+                    <Link to="/lifeCycle"> 生命周期 </Link>
                     {/* 
                         Switch表示仅匹配一个
                         设定一个没有path的路由在路由表最后面，表示一定匹配
@@ -42,6 +44,7 @@ export default class RouterPage extends Component {
                         <Route path="/redux" component={ReduxPage} />
                         <Route path="/reactRedux" component={ReactReduxPage} />
                         <Route path="/pureComponent" component={PureComponentPage} />
+                        <Route path="/lifeCycle" component={LifeCyclePage} />
                         <Route component={EmptyPage} />
                     </Switch>
                 </Router>
