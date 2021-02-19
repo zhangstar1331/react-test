@@ -12,6 +12,7 @@ import DialogPage from './DialogPage'
 import HocPage from './HocPage'
 import FormPage from './FormPage'
 import ContextPage from './Context/ContextPage'
+import UserForm from './Form/UserForm'
 export default class RouterPage extends Component {
     render() {
         return (
@@ -32,6 +33,7 @@ export default class RouterPage extends Component {
                     <Link to="/hoc"> 高阶组件 </Link>
                     <Link to="/form"> 表单组件 </Link>
                     <Link to="/context"> 组件间通信 </Link>
+                    <Link to="/userForm"> antd表单组件 </Link>
                     {/* 
                         Switch表示仅匹配一个
                         设定一个没有path的路由在路由表最后面，表示一定匹配
@@ -63,6 +65,7 @@ export default class RouterPage extends Component {
                         <Route path="/hoc" component={HocPage} />
                         <Route path="/form" component={FormPage} />
                         <Route path="/context" component={ContextPage} />
+                        <Route path="/userForm" component={UserForm} />
                         <Route component={EmptyPage} />
                     </Switch>
                 </Router>

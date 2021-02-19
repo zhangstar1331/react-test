@@ -14,6 +14,7 @@
     "customize-cra": "^1.0.0",
     "less": "^4.1.1",
     "less-loader": "5.0.0",
+    "rc-field-form": "^1.19.0",
     "rc-form": "^2.4.12",
     "react": "^17.0.1",
     "react-app-rewired": "^2.1.8",
