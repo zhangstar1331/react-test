@@ -38,9 +38,9 @@ function UserForm1() {
 
 //类式写法
 export default class UserForm extends Component {
-    formRef = React.createRef()
+    //formRef = React.createRef()
     componentDidMount(){
-        //this.formRef.current.setFieldsValue({username: "default"})
+      //  this.formRef.current.setFieldsValue({username: "default"})
     }
     onFinish = val => {
         console.log("onFinish", val)
@@ -53,7 +53,7 @@ export default class UserForm extends Component {
             <div>
                 <h3>表单</h3>
                 <Form
-                    ref={this.formRef}
+                    //ref={this.formRef}
                     onFinish={this.onFinish}
                     onFinishFailed={this.onFinishFailed}>
                         <Field name="username" rules={[nameRules]}>
