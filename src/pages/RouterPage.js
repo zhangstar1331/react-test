@@ -10,9 +10,9 @@ import AntdTestPage from './AntdTestPage'
 import HookPage from './HookPage'
 import DialogPage from './DialogPage'
 import HocPage from './HocPage'
-import FormPage from './FormPage'
 import ContextPage from './Context/ContextPage'
 import UserForm from './Form/UserForm'
+import MyRcForm from './Form/MyRcForm'
 export default class RouterPage extends Component {
     render() {
         return (
@@ -31,9 +31,9 @@ export default class RouterPage extends Component {
                     <Link to="/hook"> 认识hook及自定义hook </Link>
                     <Link to="/dialog"> 弹窗组件实现 </Link>
                     <Link to="/hoc"> 高阶组件 </Link>
-                    <Link to="/form"> 表单组件 </Link>
                     <Link to="/context"> 组件间通信 </Link>
-                    <Link to="/userForm"> antd表单组件 </Link>
+                    <Link to="/userForm"> antd4表单组件 </Link>
+                    <Link to="/rcForm"> antd3表单组件 </Link>
                     {/* 
                         Switch表示仅匹配一个
                         设定一个没有path的路由在路由表最后面，表示一定匹配
@@ -63,9 +63,9 @@ export default class RouterPage extends Component {
                         <Route path="/hook" component={HookPage} />
                         <Route path="/dialog" component={DialogPage} />
                         <Route path="/hoc" component={HocPage} />
-                        <Route path="/form" component={FormPage} />
                         <Route path="/context" component={ContextPage} />
                         <Route path="/userForm" component={UserForm} />
+                        <Route path="/rcForm" component={MyRcForm} />
                         <Route component={EmptyPage} />
                     </Switch>
                 </Router>

@@ -9342,7 +9342,7 @@ rc-field-form@~1.18.0:
 
 rc-form@^2.4.12:
   version "2.4.12"
-  resolved "https://registry.npm.taobao.org/rc-form/download/rc-form-2.4.12.tgz#4ee8711e90a2584baa7ac276de96bee0d9b0f5f1"
+  resolved "https://registry.npm.taobao.org/rc-form/download/rc-form-2.4.12.tgz?cache=0&sync_timestamp=1609317945248&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frc-form%2Fdownload%2Frc-form-2.4.12.tgz#4ee8711e90a2584baa7ac276de96bee0d9b0f5f1"
   integrity sha1-TuhxHpCiWEuqesJ23pa+4Nmw9fE=
   dependencies:
     async-validator "~1.11.3"

@@ -1,62 +1,57 @@
 import React, { Component } from 'react'
-export function createForm(Cmp){
-    return class extends Component {
+export function createForm(Cmp) {
+    return class Form extends Component {
         constructor(props){
             super(props)
             this.state = {}
             this.options = {}
         }
-        handleChange = (e) => {
+        changeValue = (e) => {
             const {name,value} = e.target
             this.setState({
-                [name]:value
+                [name] : value 
             })
         }
-        getFieldDecorator = (fieldName,option) => InputCmp => {
-            this.options[fieldName] = option
+        getFieldDecorator = (field,option) => (InputCmp) => {
+            this.options[field] = option
             return React.cloneElement(InputCmp,{
-                name: fieldName,
-                value: this.state[fieldName] || "",
-                onChange: this.handleChange
+                value:this.state[field] || "",
+                onChange: this.changeValue,
+                name: field
             })
         }
         getFieldsValue = () => {
-            return {...this.state}
-        }
-        getFieldValue = (name) => {
-            return this.state[name]
+            return this.state
         }
         setFieldsValue = (newStore) => {
             this.setState(newStore)
         }
         validateFields = callback => {
             let err = []
-            for(let fieldName in this.options){
-                if(this.state[fieldName]===undefined){
+            for(let field in this.options){
+                if(this.state[field]==='undefined'||this.state[field]===''){
                     err.push({
-                        [fieldName]:this.options[fieldName].rules[0].message
+                        [field]:this.options[field].rules[0].message
                     })
                 }
             }
-            if(err.length===0){
-                callback(null,{...this.state})
+            if(err.length>0){
+                callback('err',{err:err})
             }else{
-                callback(err,{err:err})
+                callback(null,{...this.state})
             }
         }
         getForm = () => {
             return {
-                getFieldsValue: this.getFieldsValue,
-                getFieldValue: this.getFieldValue,
-                setFieldsValue: this.setFieldsValue,
                 getFieldDecorator: this.getFieldDecorator,
-                validateFields: this.validateFields
+                getFieldsValue: this.getFieldsValue,
+                validateFields: this.validateFields,
+                setFieldsValue: this.setFieldsValue
             }
         }
         render() {
             const form = this.getForm()
             return <Cmp {...this.props} form={form}/>
         }
-    }
+    }  
 }
-
