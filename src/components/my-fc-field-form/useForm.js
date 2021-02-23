@@ -10,6 +10,12 @@ class FormStore {
     //注册Field实例
     registerField = entity => {
         this.fieldEntities.push(entity)
+
+        //卸载前清除数据
+        return () => {
+            this.fieldEntities = this.fieldEntities.filter(item => item != entity)
+            delete this.store[entity.props.name]
+        }
     }
     setCallback = (callback) => {
         this.callbacks = {
@@ -82,12 +88,17 @@ class FormStore {
     }
 }
 
-export default function useForm() {
+export default function useForm(form) {
     //useRef做缓存，方便复用
     const fromRef = useRef()
     if (!fromRef.current) {
-        const formStore = new FormStore()
-        fromRef.current = formStore.getForm()
+        //接收之前定义好的，否则在设置默认值的时候会重复执行一次
+        if (form) {
+            fromRef.current = form
+        } else {
+            const formStore = new FormStore()
+            fromRef.current = formStore.getForm()
+        }
     }
     return [fromRef.current]
 }

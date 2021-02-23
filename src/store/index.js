@@ -1,4 +1,5 @@
-import {createStore} from 'redux'
+// import {createStore} from 'redux'
+import {createStore} from '../components/my-redux'
 //reducer初始化、修改状态函数
 const counterReducer = (state = 0, action) => {
     switch (action.type) {

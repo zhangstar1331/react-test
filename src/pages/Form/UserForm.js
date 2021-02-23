@@ -7,7 +7,7 @@ const nameRules = {required: true, message: "请输入姓名"}
 const passwordRules = {required: true, message: "请输入密码"}
 
 //函数式写法
-function UserForm1() {
+export default function UserForm() {
     const [form] = Form.useForm()
     //验证成功执行
     const onFinish = val => {
@@ -37,10 +37,10 @@ function UserForm1() {
 }
 
 //类式写法
-export default class UserForm extends Component {
+class UserForm1 extends Component {
     //formRef = React.createRef()
     componentDidMount(){
-      //  this.formRef.current.setFieldsValue({username: "default"})
+    //    this.formRef.current.setFieldsValue({username: "default"})
     }
     onFinish = val => {
         console.log("onFinish", val)

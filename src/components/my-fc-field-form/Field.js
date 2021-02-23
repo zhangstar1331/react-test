@@ -5,11 +5,19 @@ export default class Field extends Component {
 
     //将当前组件添加到组件标签数组中，方便后续操作
     componentDidMount(){
-        this.context.registerField(this)
+        this.unRegisterField = this.context.registerField(this)
+    }
+
+    //即将卸载清空数据，避免操作卸载的组件出现错误
+    componentWillMount(){
+        if(this.unRegisterField){
+            this.unRegisterField()
+        }
     }
 
     //更新组件，渲染数据
     onStoreChange = () => {
+        //前提是组件还没有卸载
         this.forceUpdate()
     }
     getControlled = () => {
