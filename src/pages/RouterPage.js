@@ -13,6 +13,7 @@ import HocPage from './HocPage'
 import ContextPage from './Context/ContextPage'
 import UserForm from './Form/UserForm'
 import MyRcForm from './Form/MyRcForm'
+import ComposePage from './ComposePage'
 export default class RouterPage extends Component {
     render() {
         return (
@@ -34,6 +35,7 @@ export default class RouterPage extends Component {
                     <Link to="/context"> 组件间通信 </Link>
                     <Link to="/userForm"> antd4表单组件 </Link>
                     <Link to="/rcForm"> antd3表单组件 </Link>
+                    <Link to="/func"> 函数式编程 </Link>
                     {/* 
                         Switch表示仅匹配一个
                         设定一个没有path的路由在路由表最后面，表示一定匹配
@@ -66,6 +68,7 @@ export default class RouterPage extends Component {
                         <Route path="/context" component={ContextPage} />
                         <Route path="/userForm" component={UserForm} />
                         <Route path="/rcForm" component={MyRcForm} />
+                        <Route path="/func" component={ComposePage} />
                         <Route component={EmptyPage} />
                     </Switch>
                 </Router>
