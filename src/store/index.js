@@ -6,7 +6,7 @@ import isPromise from 'is-promise'
 import {isFSA} from 'flux-standard-action'
 import {createStore, applyMiddleware, combineReducers} from '../components/my-redux'
 //reducer初始化、修改状态函数
-const counterReducer = (state = 0, action) => {
+export const counterReducer = (state = 0, action) => {
     switch (action.type) {
         case 'ADD':
             return state + 1
