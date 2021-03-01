@@ -1,12 +1,14 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState, useLayoutEffect, useCallback} from 'react'
 
 //使用Context传递数据
 const Context = React.createContext()
 
+//通过Provider组件传递value
 export function Provider({children, store}){
     return <Context.Provider value={store}>{children}</Context.Provider>
 }
 
+//connect是个hoc，接收组件作为参数，返回一个新组件
 export const connect = (
     mapStateToProps = state => state, 
     mapDispatchToProps
@@ -22,7 +24,33 @@ export const connect = (
     }else{
         dispatchProps = {dispatch}
     }
+    //组件更新
+    const forceUpdate = useForceUpdate()
+    useLayoutEffect(() => {
+        const unsubscribe = store.subscribe(() => {
+            forceUpdate()
+        })
+        //将要卸载时执行
+        return () => {
+            if(unsubscribe){
+                unsubscribe()
+            }
+        };
+    }, [store])
+
     return <WrappedComponent {...props} {...stateProps} {...dispatchProps}/>
+}
+
+//复用forceUpdate
+function useForceUpdate() {
+    const [state, setState] = useState(0)
+    const update = useCallback(
+        () => {
+            setState(prev => prev + 1)
+        },
+        [],
+    )
+    return update
 }
 
 function bindActionCreator(creator, dispatch){
