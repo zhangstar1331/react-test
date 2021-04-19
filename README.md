@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+## hb-gocash
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 基本用法
 
-## Available Scripts
+1.引用hb-gocash组件
 
-In the project directory, you can run:
+```js
+//声明一个变量，将组件require到js里头，赋值给该变量
+var goback = require('@hb/hb-gocash/index.js');
+````css
+@import url('@hb/hb-gocash/index.css');
+```
 
-### `yarn start`
+2.使用
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```js
+//就是一个function直接使用就行
+goCash({
+      wxpay:
+        location.origin +
+        `/napi/cashier?orderId=${
+          this.basicOrderId
+        }&className=BasicOrderICash&userId=${encryUserId}`,
+      touchpay:
+        location.origin +
+        `/napi/cashier?orderId=${this.basicOrderId}&className=BasicOrderICash`,
+      miniprogrampay: `../payment/payment?orderId=${
+        this.encryOrderId
+      }&className=${encryClassName}&userId=${encryUserId}`,
+      appCashParams: {
+        nativeMethod: "goCash",
+        orderNumber: this.basicOrderId+"",
+        orderName: "专家开药门诊",
+        drName: "",
+        totalPayment: this.price+"",
+        payTime: -1,
+        serviceType: "MDCLINIC",
+        lastPageClassName: "BasicOrderICash",
+        succUrl:
+          "hdf://medicineOrder/paySuccess?lightClinicOrderId=" +
+          lightOrderId,
+        failUrl:
+          "hdf://medicineOrder/orderDetails?lightClinicOrderId=" +
+          lightOrderId,
+        backUrl:
+          "hdf://medicineOrder/orderDetails?lightClinicOrderId=" +
+          lightOrderId,
+        timeOutUrl:
+          "hdf://medicineOrder/orderDetails?lightClinicOrderId=" +
+          lightOrderId
+      });
+wxpay:微信环境跳转微信收银台的链接;
+touchpay:触屏环境跳转触屏收银台的链接;
+miniprogrampay:小程序收银台跳转链接;
+appCashParams 客户端跳转收银台需要的参数
+ nativeMethod  客户端方法名
+ orderNumber 统一订单ID
+ orderName  统一订单名称
+ totalPayment  订单价格
+ serviceType  
+ lastPageClassName  className
+ succUrl  客户端支付成功
+ failUrl  客户端支付失败
+ backUrl  客户端收银台返回
+ timeOutUrl 客户端支付超时
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 安装
 
-### `yarn test`
+```
+npm install @hb/hb-gocash
+```
+## 版本改进
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* v1.0.0
+    + 根据平台跳转对应的收银台
+* v1.0.1
+    + 添加小程序收银台跳转
+* v2.0.1
+    + 修改环境判断及跳转位置
+* v2.0.2
+	+ 添加客户端收银台方法名字的配置   
+ * v3.0.0
+    + 修改客户端获取收银台信息的方式  
+* v3.0.1
+  + 将订单编号和价格默认为字符串  升级依赖isminiprogram 版本     
+* v3.0.2
+  + feature: 第三方小程序跳转至支付引导页 
+* v3.0.3
+  + feature: 第三方小程序增加0元订单跳转至收银台，非0元订单跳转至第三方引导页    
+* v3.1.0
+  + feature: 第三方小程序跳转至引导页，携带orderId参数    
+* v3.1.1
+  + chore: 删除无用的toast,loading依赖
+* v3.1.2
+  + feature: 添加日志，以及navigateTo跳转小程序失败提示信息 
+* v3.1.3
+  + feature: 修改h5跳转小程序原生的方式，不再使用微信sdk跳转（此方式偶有跳转失败）
+* v3.1.4
+  + feature: 替换写死的跳转域名
+* v3.1.5
+  + feature: css修改
+* v3.1.6
+  + feature: 第三方合作伙伴跳转到自己的收银台
+    
+## 作者
 
-### `yarn build`
+**zhongtai**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## License
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Copyright 2017 haodf.fed, Inc.
